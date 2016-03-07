@@ -1,0 +1,62 @@
+h1 {
+    text-align: center;
+    font-family: "Helvetica Neue", "Helvetica";
+    
+}
+
+h2 {
+    font-family: "Helvetica Neue", "Helvetica";
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    border-style: none;
+    border-collapse: collapse;
+}
+
+td.selected {
+    background-color: aliceblue;
+}
+
+td {
+    font-family: "Helvetica Neue", "Helvetica";
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 2em;
+    background-color: #E8E8E8;
+}
+
+div.header {
+    background-color: floralwhite;
+}
+
+div.main {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-bottom: 2em;
+    background-color: #FFFFFF;
+}
+
+html {
+    background-color: #DBDBDB;
+}
+
+a:visited{
+    color: black;
+}
+
+a:link{
+    color: black;
+}
+
+a:hover{
+    color: hotpink;
+}
+
+a.navbar {
+    text-decoration: none;
+}
