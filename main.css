@@ -1,11 +1,16 @@
+body {
+    margin: 0em;
+}
+
 h1 {
     text-align: center;
-    font-family: "Helvetica Neue", "Helvetica";
-    
+    font-family: "Impact", "Helvetica";
+    font-size: 1.75vw;
+    font-weight: normal;
 }
 
 h2 {
-    font-family: "Helvetica Neue", "Helvetica";
+    font-family: "Impact", "Helvetica";
 }
 
 table {
@@ -15,20 +20,31 @@ table {
     border-collapse: collapse;
 }
 
+td.logo {
+    padding-right: 35vw;
+}
+
 td.selected {
+    font-family: "ImpactHelvetica NeueHelvetica Neue", "Helvetica";
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    font-size: 1.5vw;
     background-color: aliceblue;
 }
 
-td {
-    font-family: "Helvetica Neue", "Helvetica";
-    padding-left: 1em;
-    padding-right: 1em;
-    font-size: 2em;
-    background-color: #E8E8E8;
+td.navbar {
+    font-family: "ImpactHelvetica NeueHelvetica Neue", "Helvetica";
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    font-size: 1.5vw;
+    background-color: white;
 }
 
 div.header {
-    background-color: floralwhite;
+    padding: 0em;
+    padding-left: 0em;
+    background-color: white;
+    box-shadow: 0em 0.25em 0.125em grey;
 }
 
 div.main {
@@ -38,11 +54,11 @@ div.main {
     padding-left: 2em;
     padding-right: 2em;
     margin-bottom: 2em;
-    background-color: #FFFFFF;
+    background-color: #F8F8F8;
 }
 
 html {
-    background-color: #DBDBDB;
+    background-color: #EBEBEB;
 }
 
 a:visited{
@@ -54,7 +70,7 @@ a:link{
 }
 
 a:hover{
-    color: hotpink;
+    color: #A6E3F7;
 }
 
 a.navbar {
