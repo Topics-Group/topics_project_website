@@ -13,7 +13,7 @@ h2 {
     font-family: "Impact", "Helvetica";
 }
 
-table {
+table.header {
     margin-left: auto;
     margin-right: auto;
     border-style: none;
@@ -24,20 +24,11 @@ td.logo {
     padding-right: 35vw;
 }
 
-td.selected {
-    font-family: "ImpactHelvetica NeueHelvetica Neue", "Helvetica";
-    padding-left: 0.5vw;
-    padding-right: 0.5vw;
-    font-size: 1.5vw;
-    background-color: aliceblue;
-}
-
 td.navbar {
     font-family: "ImpactHelvetica NeueHelvetica Neue", "Helvetica";
     padding-left: 0.5vw;
     padding-right: 0.5vw;
     font-size: 1.5vw;
-    background-color: white;
 }
 
 div.header {
@@ -45,14 +36,21 @@ div.header {
     padding-left: 0em;
     background-color: white;
     box-shadow: 0em 0.15em 0.125em grey;
+    padding-bottom: 1.5em;
+    padding-top: 0.5em;
+    /* FOR QR CODE
+    
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Wikipedia_mobile_en.svg/2000px-Wikipedia_mobile_en.svg.png");
+    background-position: center;
+    background-size: cover;*/
 }
 
 div.main {
     margin-left: auto;
     margin-right: auto;
+    margin-top: 2em;
     max-width: 1200px;
-    padding-left: 2em;
-    padding-right: 2em;
+    padding: 2em;
     margin-bottom: 2em;
     background-color: #F8F8F8;
 }
@@ -70,10 +68,60 @@ a:link{
     color: black;
 }
 
-a:hover{
-    color: #A6E3F7;
-}
-
 a.navbar {
     text-decoration: none;
+}
+
+p.main {
+    font-size: 1em;
+}
+
+a {
+    text-decoration: none;
+    font-weight: normal;
+    cursor: default;
+}
+
+div.dropdown-menu {
+    position: relative;
+    display: inline-block;
+}
+
+div.dropdown-elems {
+    width: 100%;
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0em 0.1em 0.05em grey;
+}
+
+div.dropdown-elems a {
+    display: block;
+}
+
+a.dropdown {
+    padding-left: 0.5vw;
+    font-size: 1vw;
+}
+
+a.dropdown:hover {
+    background-color: aliceblue;
+}
+
+button.dropdown {
+    font-size: 1.5vw;
+    border: none;
+    background-color: white;
+}
+
+button.dropdown:hover {
+    background-color: aliceblue;
+}
+
+button.dropdown:hover div.dropdown-elems{
+    display: block;
+}
+
+td.navbar:hover div.dropdown-elems{
+    display: block;
 }
