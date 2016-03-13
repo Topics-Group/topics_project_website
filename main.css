@@ -5,16 +5,16 @@ body {
 h1 {
     text-align: center;
     font-family: "Helvetica Neue";
-    font-size: 2vw;
+    font-size: 2.5em;
     font-weight: normal;
 }
 
 h2 {
-    font-size: 1.9vw;
+    font-size: 2.2em;
 }
     
 h3 {
-    font-size: 1.8vw;
+    font-size: 2em;
     font-weight: normal;
 }
 
