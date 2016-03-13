@@ -58,7 +58,13 @@
                             
                                 <div class="dropdown-menu">
                                     <button class="dropdown"><a href="usability.html">Usability</a></button>
-                                    <div class="dropdown-elems"></div>
+                                    <div class="dropdown-elems">
+                                        
+                                        <a class="dropdown" href="usability.html#Current_Situation">Current Situation</a>
+                                        <a class="dropdown" href="usability.html#Evolution">Evolution of Bitcoin</a>
+                                        <a class="dropdown" href="usability.html#Milestones">Milestones</a>
+                                        
+                                    </div>
                                 </div>
                                 
                             </td>
@@ -103,14 +109,16 @@
                 If two parties want to exchange data without it being visible to any third party, one way to do it is asymmetric encryption. Bitcoin’s verification system relies heavily on this kind of encryption, so a brief explanation will be provided here. 
             </p>
             
+            <p>
+                In any system using asymmetric encryption, every user owns 2 separate keys: a public key, and a private key. A user’s public key is visible to any other user, but their private key is only visible to themselves. Anything encrypted using the private key (i.e. “locked”) can be decrypted (“unlocked”) using their public key, and vice-versa.
+            </p>
+            
             <table>
             
                 <tr>
                     
                     <td>
-                        <p>
-                            In any system using asymmetric encryption, every user owns 2 separate keys: a public key, and a private key. A user’s public key is visible to any other user, but their private key is only visible to themselves. Anything encrypted using the private key (i.e. “locked”) can be decrypted (“unlocked”) using their public key, and vice-versa.
-                        </p>
+                        
                         <p>
                             If a user wants to send data (e.g. Sally) to a recipient (e.g. Robert), they can use the following steps. First, Sally encrypts the data using Robert’s public key. This means that no-one can read the data without decrypting it. Sally can then send the encrypted (i.e. hashed) data to Robert. Robert can use his private key to decrypt the data. This means that only Robert can decrypt it, as only Robert has access to the private key corresponding to his public key.
                         </p>
@@ -142,27 +150,27 @@
                 With this, the initial transaction can continue as normal. The pubkey script is not used for verification until the output is actually spent. The transaction will be broadcast and added to the block chain (assuming it is valid).
             </p>
             
+            <p>
+                In the transaction which spends the P2PKH output, Robert must verify that he owns the output. The pubkey script will return true or false, if false is returned then the second transaction will be invalidated. Robert must provide a signature and his public key to the pubkey script. The pubkey script executes the following steps:
+            </p>
+            
+            <ul>
+                
+                <li>Robert’s signature is pushed to the execution stack</li>
+                <li>Robert’s public key is pushed to the execution stack</li>
+                <li>The public key is copied and pushed again to the stack</li>
+                <li>The copy of the public key is hashed</li>
+                <li>The original pubkey hash that Robert gave to Sally is then pushed to the stack</li>
+                <li>The new pubkey hash is compared to the original. If they are different, the script returns false and evaluation halts</li>
+                <li>Assuming they match, the signature is checked (decrypted with the now authenticated public key) – if it decrypts correctly and contains the necessary data, the transaction is valid</li>
+
+            </ul>
+            
             <table>
                 
                 <tr>
                     
                     <td valign="top">
-                        
-                        <p>
-                            In the transaction which spends the P2PKH output, Robert must verify that he owns the output. The pubkey script will return true or false, if false is returned then the second transaction will be invalidated. Robert must provide a signature and his public key to the pubkey script. The pubkey script executes the following steps:
-                        </p>
-                        
-                        <ul>
-                
-                            <li>Robert’s signature is pushed to the execution stack</li>
-                            <li>Robert’s public key is pushed to the execution stack</li>
-                            <li>The public key is copied and pushed again to the stack</li>
-                            <li>The copy of the public key is hashed</li>
-                            <li>The original pubkey hash that Robert gave to Sally is then pushed to the stack</li>
-                            <li>The new pubkey hash is compared to the original. If they are different, the script returns false and evaluation halts</li>
-                            <li>Assuming they match, the signature is checked (decrypted with the now authenticated public key) – if it decrypts correctly and contains the necessary data, the transaction is valid</li>
-
-                        </ul>
                         
                         <p>
                             After this process (i.e. after the pubkey script is executed), if true is returned then the output is used in the second transaction as an input successfully (assuming that the rest of the transaction is valid).
@@ -199,7 +207,7 @@
             </p>
             
             <p>
-                Multisig scripts are of the form “m-of-n”, which means that of the n provided signatures/hashes, at least m must match. m and n can be between 1 and 16. The script verification works the same way as a P2SH verification, but evaluation occurs for all “m” signatures provided, and the number verified is compared with “n”. If m<n, the verification fails.
+                Multisig scripts are of the form “m-of-n”, which means that of the n provided signatures/hashes, at least m must match. m and n can be between 1 and 16. The script verification works the same way as a P2SH verification, but evaluation occurs for all “m” signatures provided, and the number verified is compared with “n”. If m is less than n, the verification fails.
             </p>
             
             <h2><a name="Pubkey">Types of Scripts: Pubkey</a></h2>
