@@ -22,9 +22,13 @@
                                     <button class="dropdown"><a href="introduction.html">Introduction</a></button>
                                     <div class="dropdown-elems">
 
-                                        <a class="dropdown" href="introduction.html#Lorem">Lorem</a>
-                                        <a class="dropdown" href="introduction.html#Quaeque">Quaeque</a>
-                                        <a class="dropdown" href="introduction.html#No">No</a>
+                                        <a class="dropdown" href="introduction.html#Bitcoin">What is Bitcoin?</a>
+                                        <a class="dropdown" href="introduction.html#Nodes">Nodes</a>
+                                        <a class="dropdown" href="introduction.html#Block_Chain">Block Chain</a>
+                                        <a class="dropdown" href="introduction.html#Transactions">Transactions</a>
+                                        <a class="dropdown" href="introduction.html#Benefits">Benefits</a>
+                                        <a class="dropdown" href="introduction.html#Problems">Problems</a>
+                                        <a class="dropdown" href="introduction.html#References">References</a>
 
                                     </div>
                                 </div>
@@ -34,7 +38,15 @@
                             
                                 <div class="dropdown-menu">
                                     <button class="dropdown"><a href="transactions.html">Transactions</a></button>
-                                    <div class="dropdown-elems"></div>
+                                    <div class="dropdown-elems">
+                                    
+                                        <a class="dropdown" href="transactions.html#Transactions">What is a Transaction?</a>
+                                        <a class="dropdown" href="transactions.html#Transaction_Fees">Transaction Fees</a>
+                                        <a class="dropdown" href="transactions.html#Validation">Validation</a>
+                                        <a class="dropdown" href="transactions.html#Coinbase_Transactions">Coinbase Transactions</a>
+                                        <a class="dropdown" href="transactions.html#References">References</a>
+                                        
+                                    </div>
                                 </div>
                                 
                             </td>
@@ -56,6 +68,7 @@
                                         <a class="dropdown" href="verification.html#Sighash_Types">Sighashes</a>
                                         <a class="dropdown" href="verification.html#Key_Reuse">Key Reuse</a>
                                         <a class="dropdown" href="verification.html#Transaction_Malleability">Transaction Malleability</a>
+                                        <a class="dropdown" href="verification.html#References">References</a>
                                            
                                     </div>
                                 </div>
@@ -70,6 +83,7 @@
                                         <a class="dropdown" href="usability.html#Current_Situation">Current Situation</a>
                                         <a class="dropdown" href="usability.html#Evolution">Evolution of Bitcoin</a>
                                         <a class="dropdown" href="usability.html#Milestones">Milestones</a>
+                                        <a class="dropdown" href="usability.html#References">References</a>
                                         
                                     </div>
                                 </div>
@@ -78,8 +92,15 @@
                             <td class="navbar">
                             
                                 <div class="dropdown-menu">
-                                    <button class="dropdown"><a href="overview.html">Overview</a></button>
-                                    <div class="dropdown-elems"></div>
+                                    <button class="dropdown"><a href="contributions.html">Contributions</a></button>
+                                    <div class="dropdown-elems">
+                                    
+                                        <a class="dropdown" href="contributions.html#Rishabh_Jain">Rishabh Jain</a>
+                                        <a class="dropdown" href="contributions.html#Daniel_Dean">Daniel Dean</a>
+                                        <a class="dropdown" href="contributions.html#Arthur_Mihai-Niculae">Arthur Mihai-Niculae</a>
+                                        <a class="dropdown" href="contributions.html#Sarthak_Kumar">Sarthak Kumar</a>
+                                        
+                                    </div>
                                 </div>
                                 
                             </td>
@@ -100,17 +121,23 @@
             
         </div>
         
+        <div class="separator"></div>
+        
         <div class="main">
     
             <h1>Verification System</h1>
             
-            <h2><a name="Overview">Overview</a></h2>
+            <a class="anchor" name="Overview"></a>
+            
+            <h2>Overview</h2>
             
             <p>
                 Before an output can be used as an input to another transaction, the spender must verify that they are the owner of the output. Each transaction contains a script which follows certain steps to check that the spender of the output is the rightful owner, and different types of scripts can follow different steps.
             </p>
             
-            <h2><a name="Encryption_Basics">Basics of Asymmetric Encryption</a></h2>
+            <a class="anchor" name="Encryption_Basics"></a>
+            
+            <h2>Basics of Asymmetric Encryption</h2>
             
             <p>
                 If two parties want to exchange data without it being visible to any third party, one way to do it is asymmetric encryption. Bitcoin’s verification system relies heavily on this kind of encryption, so a brief explanation will be provided here. 
@@ -132,14 +159,16 @@
                     </td>
                     
                     <td>
-                        <img src="Asymmetric%20Encryption%20Diagram.png" style="height: 20vh; width: 25vw">
+                        <img src="/Resources/Images/Asymmetric%20Encryption%20Diagram.png" style="height: 20vh; width: 25vw">
                     </td>
                 
                 </tr>
             
             </table>
             
-            <h2><a name="P2PKH">Types of Scripts: P2PKH</a></h2>
+            <a class="anchor" name="P2PKH"></a>
+            
+            <h2>Types of Scripts: P2PKH</h2>
             
             <p>
                 P2PKH (Pay-To-Public-Key-Hash) scripts are the default script used for verifying bitcoin transactions. The steps for a P2PKH transaction are as follows:
@@ -187,7 +216,7 @@
                     
                     <td>
                         
-                        <img src="Evaluation%20Stack.png" style="height: 40vh">
+                        <img src="/Resources/Images/Evaluation%20Stack.png" style="height: 40vh">
                     
                     </td>
                     
@@ -195,7 +224,9 @@
             
             </table>
             
-            <h2><a name="P2SH">Types of Scripts: P2SH</a></h2>
+            <a class="anchor" name="P2SH"></a>
+            
+            <h2>Types of Scripts: P2SH</h2>
             
             <p>
                 P2PKH scripts have no conditions, but some recipients/spenders would want the script to only evaluate true for certain conditions (e.g. multiple people must provide signatures to allow the output to be spent). This can be done using P2SH (Pay-To-Script-Hash) verification, where instead of hashing the public key, the recipient hashes a redeem script. This script must be fulfilled to spend the output.
@@ -205,9 +236,11 @@
                 The steps for verifying a P2SH payment are the same as a P2PKH transaction, except instead of providing a public key when running the script, the recipient of the payment (Robert from the first example) must provide the redeem script (so that the two hashes match).
             </p>
             
-            <p style="text-align: center"><img src="P2SH%20Transaction.png"></p>
+            <p style="text-align: center"><img src="/Resources/Images/P2SH%20Transaction.png"></p>
             
-            <h2><a name="Multisig">Types of Scripts: Multisig</a></h2>
+            <a class="anchor" name="Multisig"></a>
+            
+            <h2>Types of Scripts: Multisig</h2>
             
             <p>
                 Multisig is a specialised type of verification script which allows the recipient to request that multiple correct signatures must be provided to validate a transaction. This is also possible using P2SH verification (and usually P2SH would be used for this), but the specialised script type still exists.
@@ -217,19 +250,25 @@
                 Multisig scripts are of the form “m-of-n”, which means that of the n provided signatures/hashes, at least m must match. m and n can be between 1 and 16. The script verification works the same way as a P2SH verification, but evaluation occurs for all “m” signatures provided, and the number verified is compared with “n”. If m is less than n, the verification fails.
             </p>
             
-            <h2><a name="Pubkey">Types of Scripts: Pubkey</a></h2>
+            <a class="anchor" name="Pubkey"></a>
+            
+            <h2>Types of Scripts: Pubkey</h2>
             
             <p>
                 Pubkey verification is very similar to P2PKH, but it is less secure as pubkey hash comparison doesn’t occur, and so P2PKH is generally used instead.
             </p>
             
-            <h2><a name="Null_Data">Types of Scripts: Null Data</a></h2>
+            <a class="anchor" name="Null_Data"></a>
+            
+            <h2>Types of Scripts: Null Data</h2>
             
             <p>
                 Null data transactions are only used to add data to the block chain. They are unable to be spent as the pubkey script attached cannot be fulfilled (this must be provable for the transaction to be classified as a null data transaction). The “spender” of a null data transaction must also pay a transaction fee as usual.
             </p>
             
-            <h2><a name="Locktime">Locktime and Sequence Numbers</a></h2>
+            <a class="anchor" name="Locktime"></a>
+            
+            <h2>Locktime and Sequence Number</h2>
             
             <p>
                 All transactions have a locktime. The locktime (included in a signature) indicates the earliest time that a transaction can be added to the block chain. This allows transactions to be created which are time-locked, allowing the signers time to change their mind. If the signers change their minds, they can create a new transaction which uses one of the inputs from the time-locked transaction, invalidating the time-locked transaction.
@@ -243,7 +282,9 @@
                 Each transaction also contains four sequence numbers, which allow the locktime of a transaction to be disabled. This can be done if all four sequence numbers are set to their maximum value (0xffffffff).
             </p>
             
-            <h2><a name="Standard_Transactions">Standard Transactions</a></h2>
+            <a class="anchor" name="Standard_Transactions"></a>
+            
+            <h2>Standard Transactions</h2>
             
             <p>
                 The default version of bitcoin code (Bitcoin Core) checks that all transactions are valid before they are broadcast by nodes in the network. This means that they must fulfil a set of rules, or else the transactions will be invalidated. Non-standard transactions can still be broadcast by nodes using different settings to the default Bitcoin Core settings, allowing them to be added to the block chain, but the chances of this occurring are low.
@@ -264,7 +305,9 @@
                 
             </ul>
             
-            <h2><a name="Sighash_Types">Signature Hash Types</a></h2>
+            <a class="anchor" name="Sighash_Types"></a>
+            
+            <h2>Signature Hash Types</h2>
             
             <p>
                 As mentioned above, certain transaction data is sent in a signature. This prevents modification of any signed data. The data which is included in the signature can be selected by the creator of the transaction. There are three types of signature hashes, which can each be modified with a flag: SIGHASH_ANYONECANPAY.
@@ -294,7 +337,9 @@
                 SIGHASH_SINGLE|SIGHASH_ANYONECANPAY signs one input and output, allowing any other users to add/remove other inputs.
             </p>
             
-            <h2><a name="Key_Reuse">Key Reuse</a></h2>
+            <a class="anchor" name="Key_Reuse"></a>
+            
+            <h2>Key Reuse</h2>
             
             <p>
                 If a user uses the same key multiple times, their transactions can be tracked (as the public key is publicly broadcast). There can also be other issues, such as the potential reconstruction of a user’s private key from their public key, or from comparison of multiple signatures.
@@ -308,7 +353,9 @@
                 Reusing keys also means that the user creates multiple signatures. These signatures can be compared to reconstruct the private key, allowing an attacker to modify transactions. If a key is only used once then only one signature is made, and so there are no other signatures to compare it with. This makes reconstruction of the private key through signature comparisons impossible (and also useless).
             </p>
             
-            <h2><a name="Transaction_Malleability">Transaction Malleability</a></h2>
+            <a class="anchor" name="Transaction_Malleability"></a>
+            
+            <h2>Transaction Malleability</h2>
             
             <p>
                 The signature script is unprotected in a transaction, and it can be modified. This can’t allow modification of a transaction, but it will affect the hash of the transaction. This hash is used to identify the transaction. This means that the actual transaction identifier (TXID) of a transaction will be different to the expected TXID.
@@ -321,6 +368,10 @@
             <p>
                 Transaction malleability can also cause issues with tracking payments. If a payment is tracked by its TXID, but the TXID changes, then it can appear to disappear. This can be avoided by tracking payments based on their inputs, not by their TXIDs. Payments can still be reissued if they seem to disappear, by using the same inputs in a new transaction (which would mean that one of the two payments are invalidated and one is valid, so one transaction should always be added to the block chain).
             </p>
+            
+            <a class="anchor" name="References"></a>
+            
+            <h2>References</h2>
             
         </div>
         

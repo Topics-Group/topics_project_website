@@ -1,3 +1,7 @@
+html {
+    background-image: url("/Resources/Images/BTC%20bg.jpg");
+}
+
 body {
     margin: 0em;
 }
@@ -11,6 +15,7 @@ h1 {
 
 h2 {
     font-size: 2.2em;
+    font-weight: normal;
 }
     
 h3 {
@@ -18,12 +23,9 @@ h3 {
     font-weight: normal;
 }
 
-li {
-    font-size: 1.7em;
-}
-
 p {
     font-size: 1.7em;
+    font-family: sans-serif;
 }
 
 p.quote {
@@ -37,6 +39,49 @@ p.img {
     font-style: italic;
     font-size: 1.5em;
     font-weight: lighter;
+}
+
+p.reference {
+    font-size: 1.3em;
+}
+
+li {
+    font-size: 1.7em;
+}
+
+a.anchor {
+    display: block;
+    position: relative;
+    visibility: hidden;
+    top: -6.5vw;
+}
+
+
+a:visited{
+    color: black;
+}
+
+a:link{
+    color: black;
+}
+
+a.visible{
+    color: gray;
+}
+
+a.visible:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+a.navbar {
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    font-weight: normal;
+    cursor: default;
 }
 
 table.header {
@@ -64,9 +109,16 @@ div.header {
     box-shadow: 0em 0.15em 0.125em grey;
     padding-bottom: 2.5em;
     padding-top: 2em;
-    background-image: url("Network%20Wallpaper.jpg");
+    background-image: url("/Resources/Images/Network%20Wallpaper.jpg");
     background-position: center;
     background-size: cover;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+}
+
+div.separator {
+    height: 4vw;
 }
 
 div.main {
@@ -84,31 +136,8 @@ div.main {
     border-width: thin;
 }
 
-html {
-    background-image: url("BTC%20bg.jpg");
-}
-
-
-a:visited{
-    color: black;
-}
-
-a:link{
-    color: black;
-}
-
-a.navbar {
-    text-decoration: none;
-}
-
-p.main {
-    font-size: 2em;
-}
-
-a {
-    text-decoration: none;
-    font-weight: normal;
-    cursor: default;
+.dropdown {
+    font-family: "Arial";
 }
 
 div.dropdown-menu {
