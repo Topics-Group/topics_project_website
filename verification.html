@@ -132,7 +132,7 @@
             <h2>Overview</h2>
             
             <p>
-                Before an output can be used as an input to another transaction, the spender must verify that they are the owner of the output. Each transaction contains a script which follows certain steps to check that the spender of the output is the rightful owner, and different types of scripts can follow different steps.
+                Before an output can be used as an input to another transaction, the spender must verify that they are the owner of the output. Each transaction contains a script which follows certain steps to check that the spender of the output is the rightful owner, and different types of scripts can follow different steps.<sup><a class="visible" href="verification.html#2">(2)</a></sup>
             </p>
             
             <a class="anchor" name="Encryption_Basics"></a>
@@ -154,12 +154,15 @@
                     <td>
                         
                         <p>
-                            If a user wants to send data (e.g. Sally) to a recipient (e.g. Robert), they can use the following steps. First, Sally encrypts the data using Robert’s public key. This means that no-one can read the data without decrypting it. Sally can then send the encrypted (i.e. hashed) data to Robert. Robert can use his private key to decrypt the data. This means that only Robert can decrypt it, as only Robert has access to the private key corresponding to his public key.
+                            If a user wants to send data (e.g. Sally) to a recipient (e.g. Robert), they can use the following steps. First, Sally encrypts the data using Robert’s public key. This means that no-one can read the data without decrypting it. Sally can then send the encrypted (i.e. hashed) data to Robert. Robert can use his private key to decrypt the data. This means that only Robert can decrypt it, as only Robert has access to the private key corresponding to his public key.<sup><a class="visible" href="transactions.html#5">(5)</a>, <a class="visible" href="transactions.html#6">(6)</a></sup>
                         </p>
                     </td>
                     
                     <td>
-                        <img src="/Resources/Images/Asymmetric%20Encryption%20Diagram.png" style="height: 20vh; width: 25vw">
+                        <p class="img">
+                            <img src="/Resources/Images/Asymmetric%20Encryption%20Diagram.png" style="height: 20vh; width: 25vw"><br />
+                            Diagram of Asymmetric Encryption<sup><a class="visible" href="verification.html#6">(6)</a></sup>
+                        </p>
                     </td>
                 
                 </tr>
@@ -171,7 +174,7 @@
             <h2>Types of Scripts: P2PKH</h2>
             
             <p>
-                P2PKH (Pay-To-Public-Key-Hash) scripts are the default script used for verifying bitcoin transactions. The steps for a P2PKH transaction are as follows:
+                P2PKH (Pay-To-Public-Key-Hash) scripts are the default script used for verifying bitcoin transactions. The steps for a P2PKH transaction are as follows:<sup><a class="visible" href="verification.html#2">(2)</a>, <a class="visible" href="verification.html#7">(7)</a>, <a class="visible" href="verification.html#8">(8)</a></sup>
             </p>
             
             <p>
@@ -216,7 +219,10 @@
                     
                     <td>
                         
-                        <img src="/Resources/Images/Evaluation%20Stack.png" style="height: 40vh">
+                        <p class="img">
+                            <img src="/Resources/Images/Evaluation%20Stack.png" style="height: 40vh"> <br />
+                            Evaluation Stack of a P2PKH Transaction<sup><a class="visible" href="verification.html#2">(2)</a></sup>
+                        </p>
                     
                     </td>
                     
@@ -233,10 +239,13 @@
             </p>
             
             <p>
-                The steps for verifying a P2SH payment are the same as a P2PKH transaction, except instead of providing a public key when running the script, the recipient of the payment (Robert from the first example) must provide the redeem script (so that the two hashes match).
+                The steps for verifying a P2SH payment are the same as a P2PKH transaction, except instead of providing a public key when running the script, the recipient of the payment (Robert from the first example) must provide the redeem script (so that the two hashes match).<sup><a class="visible" href="verification.html#2">(2)</a>, <a class="visible" href="verification.html#7">(7)</a></sup>
             </p>
             
-            <p style="text-align: center"><img src="/Resources/Images/P2SH%20Transaction.png"></p>
+            <p class="img">
+                <img src="/Resources/Images/P2SH%20Transaction.png"><br />
+                How a P2SH Transaction is Initiated<sup><a class="visible" href="verification.html#2">(2)</a></sup>
+            </p>
             
             <a class="anchor" name="Multisig"></a>
             
@@ -247,7 +256,7 @@
             </p>
             
             <p>
-                Multisig scripts are of the form “m-of-n”, which means that of the n provided signatures/hashes, at least m must match. m and n can be between 1 and 16. The script verification works the same way as a P2SH verification, but evaluation occurs for all “m” signatures provided, and the number verified is compared with “n”. If m is less than n, the verification fails.
+                Multisig scripts are of the form “m-of-n”, which means that of the n provided signatures/hashes, at least m must match. m and n can be between 1 and 16. The script verification works the same way as a P2SH verification, but evaluation occurs for all “m” signatures provided, and the number verified is compared with “n”. If m is less than n, the verification fails.<sup><a class="visible" href="verification.html#2">(2)</a></sup>
             </p>
             
             <a class="anchor" name="Pubkey"></a>
@@ -255,7 +264,7 @@
             <h2>Types of Scripts: Pubkey</h2>
             
             <p>
-                Pubkey verification is very similar to P2PKH, but it is less secure as pubkey hash comparison doesn’t occur, and so P2PKH is generally used instead.
+                Pubkey verification is very similar to P2PKH, but it is less secure as pubkey hash comparison doesn’t occur, and so P2PKH is generally used instead.<sup><a class="visible" href="verification.html#2">(2)</a></sup>
             </p>
             
             <a class="anchor" name="Null_Data"></a>
@@ -263,20 +272,38 @@
             <h2>Types of Scripts: Null Data</h2>
             
             <p>
-                Null data transactions are only used to add data to the block chain. They are unable to be spent as the pubkey script attached cannot be fulfilled (this must be provable for the transaction to be classified as a null data transaction). The “spender” of a null data transaction must also pay a transaction fee as usual.
+                Null data transactions are only used to add data to the block chain. They are unable to be spent as the pubkey script attached cannot be fulfilled (this must be provable for the transaction to be classified as a null data transaction). The “spender” of a null data transaction must also pay a transaction fee as usual.<sup><a class="visible" href="verification.html#2">(2)</a></sup>
             </p>
             
             <a class="anchor" name="Locktime"></a>
             
             <h2>Locktime and Sequence Number</h2>
             
-            <p>
-                All transactions have a locktime. The locktime (included in a signature) indicates the earliest time that a transaction can be added to the block chain. This allows transactions to be created which are time-locked, allowing the signers time to change their mind. If the signers change their minds, they can create a new transaction which uses one of the inputs from the time-locked transaction, invalidating the time-locked transaction.
-            </p>
+            <table>
             
-            <p>
-                The locktime of a transaction is stored as a 4-byte unsigned integer. If it’s less than 500 million, it is read as block height (so the transaction can be added to any block with the height of the locktime or more). If it’s greater than 500 million, the locktime is interpreted as UNIX epoch time (i.e. the number or seconds passed since 00:00:00 on 01-01-1970.
-            </p>
+                <tr>
+                    
+                    <td>
+                        <p>
+                            All transactions have a locktime. The locktime (included in a signature) indicates the earliest time that a transaction can be added to the block chain. This allows transactions to be created which are time-locked, allowing the signers time to change their mind. If the signers change their minds, they can create a new transaction which uses one of the inputs from the time-locked transaction, invalidating the time-locked transaction.<sup><a class="visible" href="verification.html#2">(2)</a>, <a class="visible" href="verification.html#8">(8)</a></sup>
+                        </p>
+                        <p>
+                            The locktime of a transaction is stored as a 4-byte unsigned integer. If it’s less than 500 million, it is read as block height (so the transaction can be added to any block with the height of the locktime or more). If it’s greater than 500 million, the locktime is interpreted as UNIX epoch time (i.e. the number or seconds passed since 00:00:00 on 01-01-1970.
+                        </p>
+                    </td>
+                
+                    <td>
+                        <p class="img">
+                            <img src="/Resources/Images/Block%20Height.svg"> <br />
+                            Block Height Illustrated<sup><a class="visible" href="verification.html#2">(2)</a></sup>
+                        </p>
+                    </td>
+                    
+                </tr>
+                
+            </table>
+            
+            
             
             <p>
                 Each transaction also contains four sequence numbers, which allow the locktime of a transaction to be disabled. This can be done if all four sequence numbers are set to their maximum value (0xffffffff).
@@ -291,7 +318,7 @@
             </p>
             
             <p>
-                For a transaction to be standard, it must use one of the above types of verification (P2PKH, P2SH, Multisig, Pubkey, or Null Data). Standard transactions must also:
+                For a transaction to be standard, it must use one of the above types of verification (P2PKH, P2SH, Multisig, Pubkey, or Null Data). Standard transactions must also:<sup><a class="visible" href="verification.html#2">(2)</a>, <a class="visible" href="verification.html#7">(7)</a>, <a class="visible" href="verification.html#8">(8)</a></sup>
             </p>
             
             <ul>
@@ -301,7 +328,7 @@
                 <li>Have signature scripts which are smaller than 1650 bytes (this allows multisig transactions of up to 15-of-15)</li>
                 <li>Have less than 3 required public keys for a multisig transaction (non-P2SH)</li>
                 <li>Have a signature script which only pushes data to the script evaluation stack</li>
-                <li>Include only outputs of larger than 1/3 as many satoshis as it would take to spend in a typical input (currently 546 satoshis), except for null data outputs which must receive 0 satoshis</li>
+                <li>Include only outputs of larger than 1/3 as many Satoshis as it would take to spend in a typical input (currently 546 Satoshis), except for null data outputs which must receive 0 Satoshis (1 Satoshi = 0.00000001BTC)</li>
                 
             </ul>
             
@@ -310,7 +337,7 @@
             <h2>Signature Hash Types</h2>
             
             <p>
-                As mentioned above, certain transaction data is sent in a signature. This prevents modification of any signed data. The data which is included in the signature can be selected by the creator of the transaction. There are three types of signature hashes, which can each be modified with a flag: SIGHASH_ANYONECANPAY.
+                As mentioned above, certain transaction data is sent in a signature. This prevents modification of any signed data. The data which is included in the signature can be selected by the creator of the transaction. There are three types of signature hashes, which can each be modified with a flag: SIGHASH_ANYONECANPAY.<sup><a class="visible" href="verification.html#2">(2)</a>, <a class="visible" href="verification.html#7">(7)</a></sup>
             </p>
             
             <p>
@@ -318,7 +345,7 @@
             </p>
             
             <p>
-                SIGHASH_ALL|SIGHASH_ANYONECANPAY signs only one input and all outputs, allowing anyone to add/remove other inputs as long as the total number of satoshis input is equal to those output.
+                SIGHASH_ALL|SIGHASH_ANYONECANPAY signs only one input and all outputs, allowing anyone to add/remove other inputs as long as the total number of Satoshis input is equal to those output.
             </p>
             
             <p>
@@ -330,7 +357,7 @@
             </p>
             
             <p>
-                SIGHASH_SINGLE signs only the output with the same index as this input. This means that no-one can modify the user’s part of the transaction, but other inputs/outputs can be added so long as the total number of satoshis input still equals the outputs (and transaction fees).
+                SIGHASH_SINGLE signs only the output with the same index as this input. This means that no-one can modify the user’s part of the transaction, but other inputs/outputs can be added so long as the total number of Satoshis input still equals the outputs (and transaction fees).
             </p>
             
             <p>
@@ -350,7 +377,7 @@
             </p>
             
             <p>
-                Reusing keys also means that the user creates multiple signatures. These signatures can be compared to reconstruct the private key, allowing an attacker to modify transactions. If a key is only used once then only one signature is made, and so there are no other signatures to compare it with. This makes reconstruction of the private key through signature comparisons impossible (and also useless).
+                Reusing keys also means that the user creates multiple signatures. These signatures can be compared to reconstruct the private key, allowing an attacker to modify transactions. If a key is only used once then only one signature is made, and so there are no other signatures to compare it with. This makes reconstruction of the private key through signature comparisons impossible (and also useless).<sup><a class="visible" href="verification.html#2">(2)</a></sup>
             </p>
             
             <a class="anchor" name="Transaction_Malleability"></a>
@@ -366,12 +393,52 @@
             </p>
             
             <p>
-                Transaction malleability can also cause issues with tracking payments. If a payment is tracked by its TXID, but the TXID changes, then it can appear to disappear. This can be avoided by tracking payments based on their inputs, not by their TXIDs. Payments can still be reissued if they seem to disappear, by using the same inputs in a new transaction (which would mean that one of the two payments are invalidated and one is valid, so one transaction should always be added to the block chain).
+                Transaction malleability can also cause issues with tracking payments. If a payment is tracked by its TXID, but the TXID changes, then it can appear to disappear. This can be avoided by tracking payments based on their inputs, not by their TXIDs. Payments can still be reissued if they seem to disappear, by using the same inputs in a new transaction (which would mean that one of the two payments are invalidated and one is valid, so one transaction should always be added to the block chain).<sup><a class="visible" href="verification.html#2">(2)</a>, <a class="visible" href="verification.html#29">(29)</a></sup>
             </p>
             
             <a class="anchor" name="References"></a>
             
             <h2>References</h2>
+            
+            <a class="anchor" name="1"></a>
+            <p class="reference">
+                1. Khaosan V. How a Bitcoin Transaction Works [Internet]. CCN: Financial Bitcoin & Cryptocurrency News. 2014 [Accessed 4 March 2016]. Available from: <a class="visible" href="https://www.cryptocoinsnews.com/bitcoin-transaction-really-works/">https://www.cryptocoinsnews.com/bitcoin-transaction-really-works/</a>
+            </p>
+            
+            <a class="anchor" name="2"></a>
+            <p class="reference">
+                2. Developer Guide - Bitcoin [Internet]. Bitcoin.org. 2016 [Accessed 15 February 2016]. Available from: <a class="visible" href="https://bitcoin.org/en/developer-guide#transactions">https://bitcoin.org/en/developer-guide#transactions</a>
+            </p>
+            
+            <a class="anchor" name="5"></a>
+            <p class="reference">
+                5. Description of Symmetric and Asymmetric Encryption [Internet]. Support.microsoft.com. 2007 [Accessed 29 February 2016]. Available from: <a class="visible" href="https://support.microsoft.com/en-us/kb/246071">https://support.microsoft.com/en-us/kb/246071</a>
+            </p>
+            
+            <a class="anchor" name="6"></a>
+            <p class="reference">
+                6. Simpson S. Cryptography Defined/Brief History [Internet]. Laits.utexas.edu. 1997 [Accessed 3 March 2016]. Available from: <a class="visible" href="http://www.laits.utexas.edu/~anorman/BUS.FOR/course.mat/SSim/history.html">http://www.laits.utexas.edu/~anorman/BUS.FOR/course.mat/SSim/history.html</a>
+            </p>
+            
+            <a class="anchor" name="7"></a>
+            <p class="reference">
+                7. Shirrif K. Bitcoins the hard way: Using the raw Bitcoin protocol [Internet]. Righto.com. 2014 [Accessed 3 March 2016]. Available from: <a class="visible" href="http://www.righto.com/2014/02/bitcoins-hard-way-using-raw-bitcoin.html">http://www.righto.com/2014/02/bitcoins-hard-way-using-raw-bitcoin.html</a>
+            </p>
+            
+            <a class="anchor" name="8"></a>
+            <p class="reference">
+                8. Mastering Bitcoin [Internet]. Chimera.labs.oreilly.com. 2013 [Accessed 4 March 2016]. Available from: <a class="visible" href="http://chimera.labs.oreilly.com/books/1234000001802/ch05.html">http://chimera.labs.oreilly.com/books/1234000001802/ch05.html</a>
+            </p>
+            
+            <a class="anchor" name="9"></a>
+            <p class="reference">
+                9. Nakamoto S. Bitcoin: A Peer-to-Peer Electronic Cash System [Internet]. 1st ed. [Accessed 7 March 2016]. Available from: <a class="visible" href="https://bitcoin.org/bitcoin.pdf">https://bitcoin.org/bitcoin.pdf</a>
+            </p>
+            
+            <a class="anchor" name="29"></a>
+            <p class="reference">
+                29. Bradbury D. What the 'Bitcoin Bug' Means: A Guide to Transaction Malleability [Internet]. CoinDesk. 2014 [Accessed 3 March 2016]. Available from: <a class="visible" href="http://www.coindesk.com/bitcoin-bug-guide-transaction-malleability/">http://www.coindesk.com/bitcoin-bug-guide-transaction-malleability/</a>
+            </p>
             
         </div>
         

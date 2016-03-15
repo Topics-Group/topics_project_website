@@ -132,29 +132,32 @@
             <h2>What is a Transaction?</h2>
             
             <p>
-                In the Bitcoin system, all BTC are exchanged through transactions. Every transaction has inputs and outputs. All inputs to a transaction must be unspent outputs from other transactions (UTXOs, or “Unspent Transaction Outputs). This means that technically no-one owns BTC, rather they have access to outputs with BTC values. For example, if a person only has access to a UTXO with 3BTC, they can’t create a transaction which uses 2.5BTC as its input.
+                In the Bitcoin system, all BTC are exchanged through transactions. Every transaction has inputs and outputs. All inputs to a transaction must be unspent outputs from other transactions (UTXOs, or “Unspent Transaction Outputs). This means that technically no-one owns BTC, rather they have access to outputs with BTC values. For example, if a person only has access to a UTXO with 3BTC, they can’t create a transaction which uses 2.5BTC as its input.<sup><a class="visible" href="transactions.html#1">(1)</a>, <a class="visible" href="transactions.html#2">(2)</a></sup>
             </p>
             
             <p>
-                Each transaction contains certain data. All transactions contain their “hash”, i.e. the hashed value of all the other data. This hash is used to refer to each transaction, as the “transaction ID” (or TXID). Transactions also contain other metadata:
+                Each transaction contains certain data. All transactions contain their “hash”, i.e. the hashed value of all the other data. This hash is used to refer to each transaction, as the “transaction ID” (or TXID). Transactions also contain other metadata:<sup><a class="visible" href="transactions.html#2">(2)</a>, <a class="visible" href="transactions.html#8">(8)</a></sup>
             </p>
             
             <ul>
                 <li>The version number of the Bitcoin software (so that each transaction is only processed according to the protocol when it was created)</li>
                 <li>The number of inputs</li>
                 <li>The number of outputs</li>
-                <li>The locktime (described in verification)</li>
+                <li>The locktime (described in <a class="visible" href="verification.html">verification</a>)</li>
                 <li>The transaction’s size in Bytes</li>
             </ul>
             
-            <p class="img"><img width= 900vw src="/Resources/Images/Bitcoin%20TX%20Example.png" /></p>
-            
-            <p>
-                Transactions also include data on inputs and outputs. Each output from a transaction contains its value in BTC, and a script. If a user can provide data for the script to evaluate to true, then the user is able to use this output (i.e. treated as its owner). This means that only the owner of an output can spend it in a transaction (this is explained in depth in the verification section).
+            <p class="img">
+                <img width= 900vw src="/Resources/Images/Bitcoin%20TX%20Example.png" /><br />
+                Example of a Bitcoin Transaction<sup><a class="visible" href="transactions.html#3">(3)</a></sup>
             </p>
             
             <p>
-                In the transaction’s data, the inputs are stored as:
+                Transactions also include data on inputs and outputs. Each output from a transaction contains its value in BTC, and a script. If a user can provide data for the script to evaluate to true, then the user is able to use this output (i.e. treated as its owner). This means that only the owner of an output can spend it in a transaction (this is explained in depth in the <a class="visible" href="verification.html">verification</a> section).<sup><a class="visible" href="transactions.html#7">(7)</a>, <a class="visible" href="transactions.html#8">(8)</a></sup>
+            </p>
+            
+            <p>
+                In the transaction’s data, the inputs are stored as:<sup><a class="visible" href="transactions.html#7">(7)</a>, <a class="visible" href="transactions.html#8">(8)</a></sup>
             </p>
             
             <ul>
@@ -164,7 +167,7 @@
             </ul>
             
             <p>
-                Outputs are stored as:
+                Outputs are stored as:<sup><a class="visible" href="transactions.html#7">(7)</a>, <a class="visible" href="transactions.html#8">(8)</a></sup>
             </p>
             
             <ul>
@@ -181,27 +184,30 @@
             </p>
             
             <p>
-                Transaction fees are typically proportionate to the size of the transaction in bytes, as larger transactions require more computation from the miner (so a higher incentive is needed to process them). There is a minimum transaction fee off 1000 Satoshis (0.00001BTC). Transaction fees are calculated as the difference between the outputs and the inputs of the transaction (outputs must be greater than inputs or the transaction is invalid).
+                Transaction fees are typically proportionate to the size of the transaction in bytes, as larger transactions require more computation from the miner (so a higher incentive is needed to process them). There is a minimum transaction fee off 1000 Satoshis (0.00001BTC). Transaction fees are calculated as the difference between the outputs and the inputs of the transaction (outputs must be greater than inputs or the transaction is invalid).<sup><a class="visible" href="transactions.html#8">(8)</a>, <a class="visible" href="transactions.html#9">(9)</a></sup>
             </p>
             
             <p>
-                If a user can’t pay the exact amount required using only their outputs, they can reclaim the change. For example, if a user has an output of 2BTC and wants to spend 1BTC (ignoring transaction fees), they can reclaim the change from this transaction by using the whole 2BTC as an input, and then sending one output of 1BTC to the recipient, and 1BTC back to the sender. The 1BTC sent back to the spender is the “change” of the transaction.
+                If a user can’t pay the exact amount required using only their outputs, they can reclaim the change. For example, if a user has an output of 2BTC and wants to spend 1BTC (ignoring transaction fees), they can reclaim the change from this transaction by using the whole 2BTC as an input, and then sending one output of 1BTC to the recipient, and 1BTC back to the sender. The 1BTC sent back to the spender is the “change” of the transaction.<sup><a class="visible" href="transactions.html#1">(1)</a>, <a class="visible" href="transactions.html#15">(15)</a></sup>
             </p>
             
-            <p class="img"><img width= 900vw src="/Resources/Images/Mining%20Fee.png" /></p>
+            <p class="img">
+                <img width= 900vw src="/Resources/Images/Mining%20Fee.png" /><br />
+                Illustration of Transaction Fees<sup><a class="visible" href="transactions.html#16">(16)</a></sup>
+            </p>
             
             <a class="anchor" name="Validation"></a>
             
             <h2>Validation</h2>
             
             <p>
-                After a user makes a transaction, they must broadcast it to the P2P network. Each node will check that the transaction is valid before broadcasting it, and miners will check this before adding the transaction to the block chain. The nodes check:
+                After a user makes a transaction, they must broadcast it to the P2P network. Each node will check that the transaction is valid before broadcasting it, and miners will check this before adding the transaction to the block chain. The nodes check:<sup><a class="visible" href="transactions.html#2">(2)</a>, <a class="visible" href="transactions.html#9">(9)</a></sup>
             </p>
             
             <ul>
                 <li>If the transaction is only spending UTXOs (i.e. not re-using outputs)</li>
-                <li>That the transaction is a “standard transaction” (explained more in the verification section)</li>
-                <li>That the spender owns the outputs they are spending (explained more in the verification section)</li>
+                <li>That the transaction is a “standard transaction” (explained more in the <a class="visible" href="verification.html">verification</a> section)</li>
+                <li>That the spender owns the outputs they are spending (explained more in the <a class="visible" href="verification.html">verification</a> section)</li>
             </ul>
             
             <p>
@@ -217,12 +223,57 @@
             </p>
             
             <p>
-                If two miners create a block within a small period of time, they can each attempt to collect the Coinbase transaction in their respective block chains. This is avoided as the block chain is self-correcting, and any forks will be removed by the network (i.e. only one of the miners’ blocks will actually be included in the block chain). The Coinbase transaction can only be spent 100 blocks after it is created, preventing two or more miners from collecting it before the block chain corrects itself.
+                If two miners create a block within a small period of time, they can each attempt to collect the Coinbase transaction in their respective block chains. This is avoided as the block chain is self-correcting, and any forks will be removed by the network (i.e. only one of the miners’ blocks will actually be included in the block chain). The Coinbase transaction can only be spent 100 blocks after it is created, preventing two or more miners from collecting it before the block chain corrects itself.<sup><a class="visible" href="transactions.html#2">(2)</a>, <a class="visible" href="transactions.html#14">(14)</a></sup>
             </p>
             
             <a class="anchor" name="References"></a>
             
             <h2>References</h2>
+            
+            <a class="anchor" name="1"></a>
+            <p class="reference">
+                1. Khaosan V. How a Bitcoin Transaction Works [Internet]. CCN: Financial Bitcoin & Cryptocurrency News. 2014 [Accessed 4 March 2016]. Available from: <a class="visible" href="https://www.cryptocoinsnews.com/bitcoin-transaction-really-works/">https://www.cryptocoinsnews.com/bitcoin-transaction-really-works/</a>
+            </p>
+            
+            <a class="anchor" name="2"></a>
+            <p class="reference">
+                2. Developer Guide - Bitcoin [Internet]. Bitcoin.org. 2016 [Accessed 15 February 2016]. Available from: <a class="visible" href="https://bitcoin.org/en/developer-guide#transactions">https://bitcoin.org/en/developer-guide#transactions</a>
+            </p>
+            
+            <a class="anchor" name="3"></a>
+            <p class="reference">
+                3. Khaosan V. [Internet]. 2016 [Accessed 7 March 2016]. Available from: <a class="visible" href="https://www.cryptocoinsnews.com/bitcoin-transaction-really-works/">https://www.cryptocoinsnews.com/bitcoin-transaction-really-works/</a>
+            </p>
+            
+            <a class="anchor" name="7"></a>
+            <p class="reference">
+                7. Shirrif K. Bitcoins the hard way: Using the raw Bitcoin protocol [Internet]. Righto.com. 2014 [Accessed 3 March 2016]. Available from: <a class="visible" href="http://www.righto.com/2014/02/bitcoins-hard-way-using-raw-bitcoin.html">http://www.righto.com/2014/02/bitcoins-hard-way-using-raw-bitcoin.html</a>
+            </p>
+            
+            <a class="anchor" name="8"></a>
+            <p class="reference">
+                8. Mastering Bitcoin [Internet]. Chimera.labs.oreilly.com. 2013 [Accessed 4 March 2016]. Available from: <a class="visible" href="http://chimera.labs.oreilly.com/books/1234000001802/ch05.html">http://chimera.labs.oreilly.com/books/1234000001802/ch05.html</a>
+            </p>
+            
+            <a class="anchor" name="9"></a>
+            <p class="reference">
+                9. Nakamoto S. Bitcoin: A Peer-to-Peer Electronic Cash System [Internet]. 1st ed. [Accessed 7 March 2016]. Available from: <a class="visible" href="https://bitcoin.org/bitcoin.pdf">https://bitcoin.org/bitcoin.pdf</a>
+            </p>
+            
+            <a class="anchor" name="14"></a>
+            <p class="reference">
+                14. Morrow J. What is a Coinbase Transaction? [Internet]. cex.io. 2016 [Accessed 3 March 2016]. Available from: <a class="visible" href="http://blog.cex.io/bitcoin-dictionary/coinbase-transaction-12088">http://blog.cex.io/bitcoin-dictionary/coinbase-transaction-12088</a>
+            </p>
+            
+            <a class="anchor" name="15"></a>
+            <p class="reference">
+                15. Lundfall M. Safello 101: Transaction fees [Internet]. safelloblog. 2014 [Accessed 2 March 2016]. Available from: <a class="visible" href="https://blog.safello.com/index.php/2014/06/16/safello-101-transaction-fees/">https://blog.safello.com/index.php/2014/06/16/safello-101-transaction-fees/</a>
+            </p>
+            
+            <a class="anchor" name="16"></a>
+            <p class="reference">
+                16. Lundfall M. Mining Fee [Internet]. 2014 [Accessed 2 March 2016]. Available from: <a class="visible" href="https://blog.safello.com/index.php/2014/06/16/safello-101-transaction-fees/">https://blog.safello.com/index.php/2014/06/16/safello-101-transaction-fees/</a>
+            </p>
             
         </div>
         
